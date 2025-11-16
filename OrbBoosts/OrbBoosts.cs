@@ -33,8 +33,8 @@ public class OrbBoosts : BaseUnityPlugin {
 		gameObject.transform.parent = null;
 		gameObject.hideFlags = HideFlags.HideAndDontSave;
 
-		SingleplayerTempUpgradesAmount = Config.Bind("Boots", "Singleplayer Temporary Upgrades", 2, new ConfigDescription("How many upgrades should you get each time you get a Upgrade Boost in singleplayer"));
-		MultiplayerTempUpgradesAmount = Config.Bind("Boots", "Multiplayer Temporary Upgrades", 1, new ConfigDescription("How many upgrades should you get each time you get a Upgrade Boost in multiplayer"));
+		SingleplayerTempUpgradesAmount = Config.Bind("Boosts", "Singleplayer Temporary Upgrades", 2, new ConfigDescription("How many upgrades should you get each time you get a Upgrade Boost in singleplayer"));
+		MultiplayerTempUpgradesAmount = Config.Bind("Boosts", "Multiplayer Temporary Upgrades", 1, new ConfigDescription("How many upgrades should you get each time you get a Upgrade Boost in multiplayer"));
 		
 		Patch();
 

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: slenered-OrbBoosts
   m_EditorClassIdentifier: 
   _mod: {fileID: 11400000, guid: 88fbc2ff7222415958ba8999dc0224be, type: 2}
-  _extraFiles: []
+  _extraFiles:
+  - {fileID: 102900000, guid: b84c2d85656458472b31049aa36808c4, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

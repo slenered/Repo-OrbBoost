@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: OrbBoosts
   _author: slenered
-  _version: 0.3.0
+  _version: 1.0.0
   _description: Enemy souls now grant a temporary buff.
-  _websiteUrl: 
+  _websiteUrl: https://github.com/slenered/Repo-OrbBoost
   _dependencies:
   - Zehs-REPOLib-2.1.0
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: dff83f6d2e166b28bbba2ecc5a2e75ad, type: 3}
   _readme: {fileID: 4900000, guid: 6dad4f8772c88424e90279a842233424, type: 3}

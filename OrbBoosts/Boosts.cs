@@ -137,7 +137,11 @@ public class Boosts : MonoBehaviour {
 		// print(name);
 		
 		var rng = Random.value;
-		// rng = 0.05f;
+		// if (Keyboard.current.numpad0Key.IsPressed()) rng = 0.51f;
+		// else if (Keyboard.current.numpad1Key.IsPressed()) rng = 0.26f;
+		// else if (Keyboard.current.numpad2Key.IsPressed()) rng = 0.16f;
+		// else if (Keyboard.current.numpad3Key.IsPressed()) rng = 0.06f;
+		// else if (Keyboard.current.numpad4Key.IsPressed()) rng = 0.05f;
 		print($"RNG: {rng} : {playerAvatar.playerName}");
 		switch (rng) {
 			case > 0.50f: // 50% Heal
@@ -310,12 +314,10 @@ public class Boosts : MonoBehaviour {
 
 			if (result != "") {
 				// UpgradeStore.BoostActions[result].Invoke(steamID);
-
 				if (!GameManager.Multiplayer()) {
 					RandomUpgradeRPC(playerID, result);
-					return;
+					continue;
 				}
-
 				_photonView.RPC("RandomUpgradeRPC", RpcTarget.All, playerID, result);
 			}
 		}
