@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/REPO/Game/Scenes/Main/Main.unity
+    guid: 6cc395ba2a7f7ea43a47f88261b683bb
+  - enabled: 1
+    path: Assets/REPO/Game/Scenes/Reload/Reload.unity
+    guid: 7f7d946cd0cf7f249ada454348db6073
+  - enabled: 1
+    path: Assets/REPO/Game/Scenes/Reload/LobbyJoin.unity
+    guid: 769ad4d2597ebe84888e03d6f4261f99
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: e77846fb5a07e6348b82e176e5b9b146, type: 2}
