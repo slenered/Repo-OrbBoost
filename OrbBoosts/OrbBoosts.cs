@@ -546,5 +546,25 @@ public class OrbBoosts : BaseUnityPlugin {
 				UpgradeStore.PlayerStats["playerUpgradeRange"][steamID] += 1;
 		}
 		
+		[HarmonyPatch(typeof(ItemUpgradePlayerTumbleClimb), nameof(ItemUpgradePlayerTumbleClimb.Upgrade))]
+		[HarmonyPostfix]
+		internal static void ItemUpgradePlayerTumbleClimbUpgrade(ItemUpgradePlayerTumbleClimb __instance) {
+			var steamID =
+				SemiFunc.PlayerGetSteamID(
+					SemiFunc.PlayerAvatarGetFromPhotonID(__instance.itemToggle.playerTogglePhotonID));
+			if (UpgradeStore.PlayerStats["playerUpgradeTumbleClimb"].ContainsKey(steamID))
+				UpgradeStore.PlayerStats["playerUpgradeTumbleClimb"][steamID] += 1;
+		}
+		
+		[HarmonyPatch(typeof(ItemUpgradeDeathHeadBattery), nameof(ItemUpgradeDeathHeadBattery.Upgrade))]
+		[HarmonyPostfix]
+		internal static void ItemUpgradeDeathHeadBatteryUpgrade(ItemUpgradeDeathHeadBattery __instance) {
+			var steamID =
+				SemiFunc.PlayerGetSteamID(
+					SemiFunc.PlayerAvatarGetFromPhotonID(__instance.itemToggle.playerTogglePhotonID));
+			if (UpgradeStore.PlayerStats["playerUpgradeDeathHeadBattery"].ContainsKey(steamID))
+				UpgradeStore.PlayerStats["playerUpgradeDeathHeadBattery"][steamID] += 1;
+		}
+		
 	}
 }

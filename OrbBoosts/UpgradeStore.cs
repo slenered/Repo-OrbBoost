@@ -14,33 +14,39 @@ public static class UpgradeStore {
 		{ "playerUpgradeCrouchRest", new Dictionary<string, int>() },
 		{ "playerUpgradeTumbleWings", new Dictionary<string, int>() },
 		{ "playerUpgradeLaunch", new Dictionary<string, int>() },
-		{ "playerUpgradeMapPlayerCount", new Dictionary<string, int>() }
+		{ "playerUpgradeMapPlayerCount", new Dictionary<string, int>() },
+		{ "playerUpgradeTumbleClimb", new Dictionary<string, int>() },
+		{ "playerUpgradeDeathHeadBattery", new Dictionary<string, int>() }
 	};
 
 	internal static readonly Dictionary<string, (float, float, float)> BoostDictionary = new() {
-		{ "playerUpgradeStrength",       (0.02f, 0.08f, 0.20f) }, // 2	 8	 20
-		{ "playerUpgradeHealth",         (0.02f, 0.08f, 0.20f) }, // 2	 8	 20
-		{ "playerUpgradeSpeed",          (0.08f, 0.09f, 0.10f) }, // 8	 9	 10
-		{ "playerUpgradeStamina",        (0.08f, 0.10f, 0.10f) }, // 8	 10  10
-		{ "playerUpgradeExtraJump",      (0.10f, 0.15f, 0.10f) }, // 10	 15  10
-		{ "playerUpgradeRange",          (0.10f, 0.15f, 0.10f) }, // 10	 15  10
-		{ "playerUpgradeCrouchRest",     (0.10f, 0.10f, 0.08f) }, // 10	 10  8
-		{ "playerUpgradeTumbleWings",    (0.10f, 0.09f, 0.08f) }, // 10	 9	 8
-		{ "playerUpgradeLaunch",         (0.20f, 0.08f, 0.02f) }, // 20	 8	 2
-		{ "playerUpgradeMapPlayerCount", (0.20f, 0.08f, 0.02f) }  // 20	 8	 2
+		{ "playerUpgradeStrength",         (0.02f, 0.05f, 0.20f) }, // 02  05  20
+		{ "playerUpgradeHealth",           (0.02f, 0.08f, 0.20f) }, // 02  08  20
+		{ "playerUpgradeSpeed",            (0.05f, 0.08f, 0.10f) }, // 05  08  10
+		{ "playerUpgradeStamina",          (0.05f, 0.10f, 0.10f) }, // 05  10  10
+		{ "playerUpgradeExtraJump",        (0.08f, 0.14f, 0.10f) }, // 08  14  10
+		{ "playerUpgradeRange",            (0.08f, 0.14f, 0.09f) }, // 08  14  09
+		{ "playerUpgradeCrouchRest",       (0.10f, 0.10f, 0.08f) }, // 10  10  08
+		{ "playerUpgradeTumbleWings",      (0.10f, 0.08f, 0.06f) }, // 10  08  06
+		{ "playerUpgradeLaunch",           (0.10f, 0.08f, 0.02f) }, // 10  08  02
+		{ "playerUpgradeTumbleClimb",      (0.10f, 0.05f, 0.02f) }, // 10  05  02
+		{ "playerUpgradeDeathHeadBattery", (0.15f, 0.05f, 0.02f) }, // 15  05  02
+		{ "playerUpgradeMapPlayerCount",   (0.15f, 0.05f, 0.01f) }, // 15  05  01
 			
 	};
 	internal static readonly List<(string, (float, float, float))> Boosts = [
-		("playerUpgradeStrength",       BoostDictionary["playerUpgradeStrength"]),
-		("playerUpgradeHealth",         BoostDictionary["playerUpgradeHealth"]),
-		("playerUpgradeSpeed",          BoostDictionary["playerUpgradeSpeed"]),
-		("playerUpgradeStamina",        BoostDictionary["playerUpgradeStamina"]),
-		("playerUpgradeExtraJump",      BoostDictionary["playerUpgradeExtraJump"]),
-		("playerUpgradeRange",          BoostDictionary["playerUpgradeRange"]),
-		("playerUpgradeCrouchRest",     BoostDictionary["playerUpgradeCrouchRest"]),
-		("playerUpgradeTumbleWings",    BoostDictionary["playerUpgradeTumbleWings"]),
-		("playerUpgradeLaunch",         BoostDictionary["playerUpgradeLaunch"]),
-		("playerUpgradeMapPlayerCount", BoostDictionary["playerUpgradeMapPlayerCount"])
+		("playerUpgradeStrength",         BoostDictionary["playerUpgradeStrength"]),
+		("playerUpgradeHealth",           BoostDictionary["playerUpgradeHealth"]),
+		("playerUpgradeSpeed",            BoostDictionary["playerUpgradeSpeed"]),
+		("playerUpgradeStamina",          BoostDictionary["playerUpgradeStamina"]),
+		("playerUpgradeExtraJump",        BoostDictionary["playerUpgradeExtraJump"]),
+		("playerUpgradeRange",            BoostDictionary["playerUpgradeRange"]),
+		("playerUpgradeCrouchRest",       BoostDictionary["playerUpgradeCrouchRest"]),
+		("playerUpgradeTumbleWings",      BoostDictionary["playerUpgradeTumbleWings"]),
+		("playerUpgradeLaunch",           BoostDictionary["playerUpgradeLaunch"]),
+		("playerUpgradeMapPlayerCount",   BoostDictionary["playerUpgradeMapPlayerCount"]),
+		("playerUpgradeTumbleClimb",      BoostDictionary["playerUpgradeTumbleClimb"]),
+		("playerUpgradeDeathHeadBattery", BoostDictionary["playerUpgradeDeathHeadBattery"])
 	];
 	//playerUpgradeThrow : UpgradePlayerThrowStrength
 
@@ -54,6 +60,8 @@ public static class UpgradeStore {
 	private static readonly UnityEvent<string> UpgradePlayerCrouchRestEvent = new(); 
 	private static readonly UnityEvent<string> UpgradePlayerGrabStrengthEvent = new(); 
 	private static readonly UnityEvent<string> UpgradePlayerGrabRangeEvent = new(); 
+	private static readonly UnityEvent<string> UpgradePlayerTumbleClimbEvent = new(); // UpgradePlayerTumbleClimb
+	private static readonly UnityEvent<string> UpgradeDeathHeadBatteryEvent = new();  // UpgradeDeathHeadBattery
 	
 	
 	private static readonly UnityEvent<string> ResetUpgradePlayerHealthEvent = new(); 
@@ -66,6 +74,8 @@ public static class UpgradeStore {
 	private static readonly UnityEvent<string> ResetUpgradePlayerCrouchRestEvent = new(); 
 	private static readonly UnityEvent<string> ResetUpgradePlayerGrabStrengthEvent = new(); 
 	private static readonly UnityEvent<string> ResetUpgradePlayerGrabRangeEvent = new(); 
+	private static readonly UnityEvent<string> ResetUpgradePlayerTumbleClimbEvent = new(); 
+	private static readonly UnityEvent<string> ResetUpgradeDeathHeadBatteryEvent = new(); 
 	
 
 	static UpgradeStore() {
@@ -79,6 +89,8 @@ public static class UpgradeStore {
 		UpgradePlayerCrouchRestEvent.AddListener(UpgradePlayerCrouchRest);
 		UpgradePlayerGrabStrengthEvent.AddListener(UpgradePlayerGrabStrength);
 		UpgradePlayerGrabRangeEvent.AddListener(UpgradePlayerGrabRange);
+		UpgradePlayerTumbleClimbEvent.AddListener(UpgradeUpgradePlayerTumbleClimb);
+		UpgradeDeathHeadBatteryEvent.AddListener(UpgradeUpgradeDeathHeadBattery);
 		
 		ResetUpgradePlayerHealthEvent.AddListener(ResetUpgradePlayerHealth);
 		ResetUpgradePlayerEnergyEvent.AddListener(ResetUpgradePlayerEnergy);
@@ -90,6 +102,8 @@ public static class UpgradeStore {
 		ResetUpgradePlayerCrouchRestEvent.AddListener(ResetUpgradePlayerCrouchRest);
 		ResetUpgradePlayerGrabStrengthEvent.AddListener(ResetUpgradePlayerGrabStrength);
 		ResetUpgradePlayerGrabRangeEvent.AddListener(ResetUpgradePlayerGrabRange);
+		ResetUpgradePlayerTumbleClimbEvent.AddListener(ResetUpgradePlayerTumbleClimb);
+		ResetUpgradeDeathHeadBatteryEvent.AddListener(ResetUpgradeDeathHeadBattery);
 	}
 	
 	
@@ -103,7 +117,9 @@ public static class UpgradeStore {
 		{ "playerUpgradeSpeed", UpgradePlayerSprintSpeedEvent },
 		{ "playerUpgradeCrouchRest", UpgradePlayerCrouchRestEvent },
 		{ "playerUpgradeStrength", UpgradePlayerGrabStrengthEvent },
-		{ "playerUpgradeRange", UpgradePlayerGrabRangeEvent }
+		{ "playerUpgradeRange", UpgradePlayerGrabRangeEvent },
+		{ "playerUpgradeTumbleClimb", UpgradePlayerTumbleClimbEvent },
+		{ "playerUpgradeDeathHeadBattery", UpgradeDeathHeadBatteryEvent }
 	};
 	
 	internal static readonly Dictionary<string, UnityEvent<string>> ResetActions = new() {
@@ -116,7 +132,9 @@ public static class UpgradeStore {
 		{ "playerUpgradeSpeed", ResetUpgradePlayerSprintSpeedEvent },
 		{ "playerUpgradeCrouchRest", ResetUpgradePlayerCrouchRestEvent },
 		{ "playerUpgradeStrength", ResetUpgradePlayerGrabStrengthEvent },
-		{ "playerUpgradeRange", ResetUpgradePlayerGrabRangeEvent }
+		{ "playerUpgradeRange", ResetUpgradePlayerGrabRangeEvent },
+		{ "playerUpgradeTumbleClimb", ResetUpgradePlayerTumbleClimbEvent },
+		{ "playerUpgradeDeathHeadBattery", ResetUpgradeDeathHeadBatteryEvent }
 	};
 	
 	private static void UpgradePlayerHealth(string steamID) {
@@ -189,48 +207,58 @@ public static class UpgradeStore {
 		OrbBoosts.Logger.LogInfo("GrabRange");
 		PunManager.instance.UpgradePlayerGrabRange(steamID);
 	}
+	private static void UpgradeUpgradePlayerTumbleClimb(string steamID) {
+		if (!PlayerStats["playerUpgradeTumbleClimb"].ContainsKey(steamID)) {
+			PlayerStats["playerUpgradeTumbleClimb"].Add(steamID, StatsManager.instance.playerUpgradeRange[steamID]);
+		}
+		OrbBoosts.Logger.LogInfo("TumbleClimb");
+		PunManager.instance.UpgradePlayerTumbleClimb(steamID);
+	}
+	private static void UpgradeUpgradeDeathHeadBattery(string steamID) {
+		if (!PlayerStats["playerUpgradeDeathHeadBattery"].ContainsKey(steamID)) {
+			PlayerStats["playerUpgradeDeathHeadBattery"].Add(steamID, StatsManager.instance.playerUpgradeRange[steamID]);
+		}
+		OrbBoosts.Logger.LogInfo("DeathHeadBattery");
+		PunManager.instance.UpgradeDeathHeadBattery(steamID);
+	}
 	
 	
 	
 	private static void ResetUpgradePlayerHealth(string steamID) {
-		//OrbBoosts.Logger.LogInfo($"playerUpgradeHealth: {StatsManager.instance.playerUpgradeHealth[steamID]} : {PlayerStats["playerUpgradeHealth"][steamID]}");
 		StatsManager.instance.playerUpgradeHealth[steamID] = PlayerStats["playerUpgradeHealth"][steamID];
 	}
 	private static void ResetUpgradePlayerEnergy(string steamID) {
-		//OrbBoosts.Logger.LogInfo($"playerUpgradeStamina: {StatsManager.instance.playerUpgradeStamina[steamID]} : {PlayerStats["playerUpgradeStamina"][steamID]}");
 		StatsManager.instance.playerUpgradeStamina[steamID] = PlayerStats["playerUpgradeStamina"][steamID];
 	}
 	private static void ResetUpgradePlayerExtraJump(string steamID) {
-		//OrbBoosts.Logger.LogInfo($"playerUpgradeExtraJump: {StatsManager.instance.playerUpgradeExtraJump[steamID]} : {PlayerStats["playerUpgradeExtraJump"][steamID]}");
 		StatsManager.instance.playerUpgradeExtraJump[steamID] = PlayerStats["playerUpgradeExtraJump"][steamID];
 	}
 	private static void ResetUpgradeMapPlayerCount(string steamID) {
-		//OrbBoosts.Logger.LogInfo($"playerUpgradeMapPlayerCount: {StatsManager.instance.playerUpgradeMapPlayerCount[steamID]} : {PlayerStats["playerUpgradeMapPlayerCount"][steamID]}");
 		StatsManager.instance.playerUpgradeMapPlayerCount[steamID] = PlayerStats["playerUpgradeMapPlayerCount"][steamID];
 	}
 	private static void ResetUpgradePlayerTumbleLaunch(string steamID) {
-		//OrbBoosts.Logger.LogInfo($"playerUpgradeLaunch: {StatsManager.instance.playerUpgradeLaunch[steamID]} : {PlayerStats["playerUpgradeLaunch"][steamID]}");
 		StatsManager.instance.playerUpgradeLaunch[steamID] = PlayerStats["playerUpgradeLaunch"][steamID];
 	}
 	private static void ResetUpgradePlayerTumbleWings(string steamID) {
-		//OrbBoosts.Logger.LogInfo($"playerUpgradeTumbleWings: {StatsManager.instance.playerUpgradeTumbleWings[steamID]} : {PlayerStats["playerUpgradeTumbleWings"][steamID]}");
 		StatsManager.instance.playerUpgradeTumbleWings[steamID] = PlayerStats["playerUpgradeTumbleWings"][steamID];
 	}
 	private static void ResetUpgradePlayerSprintSpeed(string steamID) {
-		//OrbBoosts.Logger.LogInfo($"playerUpgradeSpeed: {StatsManager.instance.playerUpgradeSpeed[steamID]} : {PlayerStats["playerUpgradeSpeed"][steamID]}");
 		StatsManager.instance.playerUpgradeSpeed[steamID] = PlayerStats["playerUpgradeSpeed"][steamID];
 	}
 	private static void ResetUpgradePlayerCrouchRest(string steamID) {
-		//OrbBoosts.Logger.LogInfo($"playerUpgradeCrouchRest: {StatsManager.instance.playerUpgradeCrouchRest[steamID]} : {PlayerStats["playerUpgradeCrouchRest"][steamID]}");
 		StatsManager.instance.playerUpgradeCrouchRest[steamID] = PlayerStats["playerUpgradeCrouchRest"][steamID];
 	}
 	private static void ResetUpgradePlayerGrabStrength(string steamID) {
-		//OrbBoosts.Logger.LogInfo($"playerUpgradeStrength: {StatsManager.instance.playerUpgradeStrength[steamID]} : {PlayerStats["playerUpgradeStrength"][steamID]}");
 		StatsManager.instance.playerUpgradeStrength[steamID] = PlayerStats["playerUpgradeStrength"][steamID];
 	}
 	private static void ResetUpgradePlayerGrabRange(string steamID) {
-		//OrbBoosts.Logger.LogInfo($"playerUpgradeRange: {StatsManager.instance.playerUpgradeRange[steamID]} : {PlayerStats["playerUpgradeRange"][steamID]}");
 		StatsManager.instance.playerUpgradeRange[steamID] = PlayerStats["playerUpgradeRange"][steamID];
+	}
+	private static void ResetUpgradePlayerTumbleClimb(string steamID) {
+		StatsManager.instance.playerUpgradeRange[steamID] = PlayerStats["playerUpgradeTumbleClimb"][steamID];
+	}
+	private static void ResetUpgradeDeathHeadBattery(string steamID) {
+		StatsManager.instance.playerUpgradeRange[steamID] = PlayerStats["playerUpgradeDeathHeadBattery"][steamID];
 	}
 	
 	

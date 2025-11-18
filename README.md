@@ -1,7 +1,7 @@
 (Insert eyecatching pitch here)
 # OrbBoosts
 Orbs (or souls) now grant a random effect when used.
-* 50% Heal; tier 1: 8-40 HP, tier 2: 24-80 HP, tier 3: 48-120 HP
+* 50% Heal; tier 1: 10-30 HP, tier 2: 20-60 HP, tier 3: 30-90 HP
 * 25% Random temporary upgrade (Clears at the end of the level)
 * 10% Random temporary weapon (Unrechargeable, clears at the end of the level)
 * 10% Spawns an unrechargeable temporary stealth drone that turns a player both invisible and silent, lasting for 40, 80, 120 seconds respectfully. 
@@ -12,19 +12,20 @@ Orbs (or souls) now grant a random effect when used.
 
 | Upgrade             | Tier 1 | Tier 2 | Tier 3 |
 |---------------------|:------:|:------:|:------:|
-| Strength            |   2%   |   8%   |  20%   |
+| Strength            |   2%   |   5%   |  20%   |
 | Health              |   2%   |   8%   |  20%   |
-| Speed               |   8%   |   9%   |  10%   |
-| Stamina             |   8%   |  10%   |  10%   |
-| Extra Jump          |  10%   |  15%   |  10%   |
-| Range               |  10%   |  15%   |  10%   |
+| Speed               |   5%   |   8%   |  10%   |
+| Stamina             |   5%   |  10%   |  10%   |
+| Extra Jump          |   8%   |  14%   |  10%   |
+| Range               |   8%   |  14%   |   9%   |
 | Crouch Rest         |  10%   |  10%   |   8%   |
-| Tumble Wings        |  10%   |   9%   |   8%   |
-| Tumble Launch       |  20%   |   8%   |   2%   |
-| Map Player Count*   |  20%   |   8%   |   2%   |
-| Player Count Reflow | +2.22% | +0.88% | +0.22% |
+| Tumble Wings        |  10%   |   8%   |   6%   |
+| Tumble Launch       |  10%   |   8%   |   2%   |
+| Tumble Climb        |  10%   |   5%   |   2%   |
+| Death Head Battery  |  15%   |   5%   |   2%   |
+| Map Player Count*   |  15%   |   5%   |   1%   |
 
-*Map Player Count can only be obtained once, the last row shows the increase rate of everything else. 
+*Map Player Count can only be obtained once, it's rate gets redistributed to everything else. 
 
 </details>
 
@@ -52,7 +53,10 @@ Orbs (or souls) now grant a random effect when used.
 
 
 ***
-If you discover any issues, please report them to the GitHub repo: .
+If you discover any issues, please report them to the GitHub repo: https://github.com/slenered/Repo-OrbBoost.
 ***
+Known Issues:
+- When acquiring 10 or more temporary upgrades, the upgrades list display maybe improperly formated.
 ### Changelog:
-0.\*.*: Pre-Released.
+1.0.1: Added Death Battery and Tumble Climb to the Upgrade pool.\
+1.0.0: release!

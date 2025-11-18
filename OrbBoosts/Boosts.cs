@@ -137,6 +137,7 @@ public class Boosts : MonoBehaviour {
 		// print(name);
 		
 		var rng = Random.value;
+		rng = 0.26f;
 		// if (Keyboard.current.numpad0Key.IsPressed()) rng = 0.51f;
 		// else if (Keyboard.current.numpad1Key.IsPressed()) rng = 0.26f;
 		// else if (Keyboard.current.numpad2Key.IsPressed()) rng = 0.16f;
@@ -152,7 +153,7 @@ public class Boosts : MonoBehaviour {
 				break;
 			case > 0.25f: // 25% Upgrade
 				// print("Upgrading");
-				RandomUpgrade(_itemToggle.playerTogglePhotonID, Random.value);
+				RandomUpgrade(_itemToggle.playerTogglePhotonID);
 				break;
 			case > 0.15f: // 10% Stealth
 				StealthBoost();
@@ -281,7 +282,7 @@ public class Boosts : MonoBehaviour {
 		// }
 	}
 
-	private void RandomUpgrade(int playerID, float rng) {
+	private void RandomUpgrade(int playerID) {
 		var playerAvatar = SemiFunc.PlayerAvatarGetFromPhotonID(playerID);
 		var upgrades = UpgradeStore.Boosts;
 		upgrades.Sort((tuple, valueTuple) => {
@@ -298,28 +299,36 @@ public class Boosts : MonoBehaviour {
 		}
 		
 		var upgradeTimes = GameManager.Multiplayer() ? OrbBoosts.MultiplayerTempUpgradesAmount.Value : OrbBoosts.SingleplayerTempUpgradesAmount.Value;
-
+		var lastUpgrade = "";
 		for (var i = 0; i < upgradeTimes; i++) {
+			var rng = Random.value;
 			var result = "";
 			foreach (var upgrade in upgrades) {
 				var weight = ParseWeight(upgrade.Item2, _size) + addWeight;
 				if (weight <= 0f) break;
 				if (weight >= rng) {
 					result = upgrade.Item1;
+					print($"Result: {result}");
+					if (result == lastUpgrade) {
+						print("Duplicate upgrade, rerolling");
+						lastUpgrade = "";
+						result = "";
+						i--;
+					}
 					break;
 				}
 
 				rng -= weight;
 			}
 
-			if (result != "") {
-				// UpgradeStore.BoostActions[result].Invoke(steamID);
-				if (!GameManager.Multiplayer()) {
-					RandomUpgradeRPC(playerID, result);
-					continue;
-				}
-				_photonView.RPC("RandomUpgradeRPC", RpcTarget.All, playerID, result);
+			if (result == "") continue;
+			lastUpgrade = result;
+			// UpgradeStore.BoostActions[result].Invoke(steamID);
+			if (!GameManager.Multiplayer()) {
+				RandomUpgradeRPC(playerID, result);
+				continue;
 			}
+			_photonView.RPC("RandomUpgradeRPC", RpcTarget.All, playerID, result);
 		}
 	}
 	
