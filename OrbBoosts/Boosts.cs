@@ -137,7 +137,7 @@ public class Boosts : MonoBehaviour {
 		// print(name);
 		
 		var rng = Random.value;
-		rng = 0.26f;
+		// rng = 0.26f;
 		// if (Keyboard.current.numpad0Key.IsPressed()) rng = 0.51f;
 		// else if (Keyboard.current.numpad1Key.IsPressed()) rng = 0.26f;
 		// else if (Keyboard.current.numpad2Key.IsPressed()) rng = 0.16f;

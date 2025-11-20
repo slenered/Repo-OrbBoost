@@ -58,5 +58,6 @@ If you discover any issues, please report them to the GitHub repo: https://githu
 Known Issues:
 - When acquiring 10 or more temporary upgrades, the upgrades list display maybe improperly formated.
 ### Changelog:
+1.0.2: Fixed orb would give only upgrade boosts.\
 1.0.1: Added Death Battery and Tumble Climb to the Upgrade pool.\
 1.0.0: release!
